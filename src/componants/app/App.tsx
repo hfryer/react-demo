@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 function App() {
     return (
         <div>
-            <Navbar bg='dark' variant='dark'>
+            <Navbar bg='dark' variant='dark' className='mb-1'>
                 <Navbar.Brand as={Link} to={'/'}>Harry's Demo Website</Navbar.Brand>
                 <Nav className='mr-auto'>
                     <Nav.Item>

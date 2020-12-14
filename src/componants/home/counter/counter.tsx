@@ -29,7 +29,7 @@ class Counter extends React.Component<any, CounterState>{
     }
     render() {
         return (
-            <Card>
+            <Card className='m-3'>
                 <Card.Header>
                     <h3 className='text-center'>Counter Example</h3>
                 </Card.Header>
