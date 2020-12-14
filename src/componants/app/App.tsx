@@ -1,5 +1,4 @@
 import './App.css';
-
 import React from 'react'
 import ROUTES, {RenderRoutes} from "../../routes/routes";
 import {Nav, Navbar} from 'react-bootstrap';
@@ -12,7 +11,7 @@ function App() {
                 <Navbar.Brand as={Link} to={'/'}>Harry's Demo Website</Navbar.Brand>
                 <Nav className='mr-auto'>
                     <Nav.Item>
-                         <Nav.Link as={Link} to={'/about'}>About</Nav.Link>
+                        <Nav.Link as={Link} to={'/about'}>About</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link as={Link} to={'/projects'}>Projects</Nav.Link>
