@@ -6,6 +6,7 @@ import React, { ComponentType} from 'react';
 
 interface InternalRouteType {
     path: string
+    key: string
     component: ComponentType
 }
 
@@ -15,15 +16,15 @@ interface InternalRouteProps{
 
 const ROUTES: Array<InternalRouteType> =
     [
-        {path: '/about', component: About},
-        {path:'/projects', component: Projects},
-        {path: '/', component: Home}
+        {path: '/about',key: 'about', component: About},
+        {path:'/projects', key:'projects', component: Projects},
+        {path: '/', key:'home', component: Home}
     ]
 
 export const RenderRoutes: React.FC<InternalRouteProps> = ({routes}: InternalRouteProps)=> {
     return <Switch>
             {routes.map((route, index)=>{
-                return <Route path={route.path} component={route.component}/>
+                return <Route path={route.path} component={route.component} key={route.key}/>
             })}
         </Switch>
 }
