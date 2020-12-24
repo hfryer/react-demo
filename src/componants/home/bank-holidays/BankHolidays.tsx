@@ -1,7 +1,17 @@
 import React from "react";
-import {Card} from "react-bootstrap";
 import axios from 'axios';
 import {DateTime} from 'luxon'
+import {
+    Card,
+    CardContent,
+    Grid,
+    Paper, Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead, TableRow,
+    Typography
+} from "@material-ui/core";
 
 interface BankHolidayItem {
     title: string
@@ -11,13 +21,18 @@ interface BankHolidayItem {
 interface BankHolidaysState {
     bankHolidays: Array<BankHolidayItem>
 }
-interface BankHolidayItemProps{
+
+interface BankHolidayItemProps {
     item: BankHolidayItem
 }
 
 export const RenderBankHolidayItem: React.FC<BankHolidayItemProps> = ({item}) => {
     let convertedDate = item.date.toLocaleString(DateTime.DATE_FULL);
-    return (<li>{item.title} - {convertedDate}</li>);
+    return (
+        <TableRow>
+            <TableCell>{item.title}</TableCell>
+            <TableCell>{convertedDate}</TableCell>
+        </TableRow>);
 }
 
 class BankHolidays extends React.Component<any, BankHolidaysState> {
@@ -54,17 +69,29 @@ class BankHolidays extends React.Component<any, BankHolidaysState> {
     }
 
     render() {
-        return <Card className='m-3'>
-            <Card.Header>
-                <h4>English Bank Holidays</h4>
-            </Card.Header>
-            <Card.Body>
-                <ul>
-                    {this.state.bankHolidays.map((item, index) => {
-                        return <RenderBankHolidayItem key={index} item={item}/>
-                    })}
-                </ul>
-            </Card.Body>
+        return <Card>
+            <CardContent>
+                <Grid spacing={3}>
+                    <Grid item xs={12}>
+                        <Typography variant={'h4'} align={"center"}>
+                            English Bank Holidays
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Table size="small" stickyHeader>
+                            <TableHead>
+                                <TableCell> Holiday Name</TableCell>
+                                <TableCell> Date</TableCell>
+                            </TableHead>
+                            <TableBody>
+                                {this.state.bankHolidays.map((item, index) => {
+                                    return <RenderBankHolidayItem key={index} item={item}/>
+                                })}
+                            </TableBody>
+                        </Table>
+                    </Grid>
+                </Grid>
+            </CardContent>
         </Card>
     }
 
